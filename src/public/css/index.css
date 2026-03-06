@@ -1,0 +1,75 @@
+.form--container {
+    max-width: 1000px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.error {
+    width: 100%;
+    background-color: #f8d7da;
+    color: #842029;
+    border: #f5c2c7;
+}
+
+/* create-form */
+
+.create_form {
+    width: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 100px;
+}
+
+.create--form_input input {
+    width: 600px;
+    margin-right: 100px;
+    padding: 1rem;
+    font-size: 20px;
+    display: inline-block;
+}
+
+/* .create--form_item {
+} */
+
+
+.create--form_btn {
+    width: 80px;
+}
+
+.create_btn {
+    width: 200px;
+    padding: 1rem;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+/* todo-table */
+.todo--table {
+    width: 100%;
+
+}
+
+.update--form_button,
+.delete--form_btn {
+    width: 100px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.update--form_button {
+    background-color: #0000ff;
+}
+
+.delete--form_btn {
+    background-color: #ff0000;
+}
+
+
+
+.update--form input {
+    border: none;
+}
