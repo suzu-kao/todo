@@ -14,20 +14,35 @@
     <header class="header">
         <div class="header__inner">
             <nav>
-                <h1>@yield('title')</h1>
+                <h1><a class="header__inner-link">@yield('title')
+                </a></h1>
+                <div class="category--btn">
+                    <a href="/">カテゴリ一覧</a>
+                </div>
             </nav>
         </div>
+        <!-- {{-- settionメッセージ --}} -->
+        @if (session('message'))
+        <div class="success-msg_container">
+            <div class="success-msg">
+                {{ session('message') }}
+            </div>
+        </div>
+        @endif
+
+        <!-- {{-- エラーメッセージ --}} -->
+        @error('content')
+        <div class="error__container">
+            <div class="error">
+                {{ $message }}
+            </div>
+        </div>
+        @enderror
     </header>
 
-    
-    {{-- settionメッセージ --}}
-    @if (session('message'))
-    <div class="success-msg">
-        {{ session('message') }}
-    </div>
-    @endif
 
-    
+
+
 
     <main>
         @yield('content')
