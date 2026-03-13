@@ -16,9 +16,11 @@
             <nav>
                 <h1><a class="header__inner-link">@yield('title')
                 </a></h1>
-                <div class="category--btn">
-                    <a href="/">カテゴリ一覧</a>
-                </div>
+                <ul class="category--btn">
+                    <li>
+                        <a href="/category">カテゴリ一覧</a>
+                    </li>
+                </ul>
             </nav>
         </div>
         <!-- {{-- settionメッセージ --}} -->
@@ -30,14 +32,14 @@
         </div>
         @endif
 
-        <!-- {{-- エラーメッセージ --}} -->
+        <!-- {{-- エラーメッセージ --}}
         @error('content')
         <div class="error__container">
             <div class="error">
                 {{ $message }}
             </div>
         </div>
-        @enderror
+        @enderror -->
     </header>
 
 

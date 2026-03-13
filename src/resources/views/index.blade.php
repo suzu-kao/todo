@@ -9,9 +9,16 @@
 
 
 
+<!-- {{-- エラーメッセージ --}} -->
+@error('content')
+<div class="error__container">
+    <div class="error">
+        {{ $message }}
+    </div>
+</div>
+@enderror
 
 @section('content')
-
 
 <div class="form--container">
     <h2>新規作成</h2>
@@ -21,8 +28,16 @@
             <input type="text" name="content" class="create--form_item" value="{{ old('content') }}">
         </div>
         <div class="create--form_select form_select">
-            <select name="" id="">
+            <select name="category_id" id="category_id">
                 <option value="" selected>カテゴリ</option>
+
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}"
+                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+                @endforeach
+
             </select>
         </div>
         <div class="create--form_btn form_btn">
@@ -39,6 +54,13 @@
         <div class="search--form_select form_select">
             <select name="" id="">
                 <option value="" selected>カテゴリ</option>
+
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">
+                    {{ $category->name }}
+                </option>
+                @endforeach
+
             </select>
         </div>
         <div class="search--form_btn form_btn">
@@ -56,11 +78,11 @@
             </th>
         </tr>
         @foreach ($todos as $todo)
-        <tr class="todo--table_row">
-            <td class="todo--table_td">
+        <tr class="todo--table_row table_row">
+            <td class="todo--table_td table_td">
                 <form action="/todos/update" method="post" class="update--form">
-                    @csrf
                     @method('PATCH')
+                    @csrf
                     <!-- 編集欄 -->
                     <div>
                         <input type="text" name="content" value="{{ $todo->content }}" class="update--form_input">
@@ -68,8 +90,9 @@
                     </div>
                     <!-- カテゴリ -->
                     <div>
-                        <input type="text" name="content" value="{{ $todo->content }}" class="update--form_input">
-                        <input type="hidden" name="id" value="{{ $todo['id'] }}">
+                        {{ $todo->category->name }}
+                        <!-- <input type="text" name="content" value="{{ $category->name }}" class="update--form_input">
+                        <input type="hidden" name="id" value="{{ $category['id'] }}"> -->
                     </div>
                     <!-- 更新ボタン -->
                     <div>
