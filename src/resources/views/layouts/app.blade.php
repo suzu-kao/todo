@@ -14,7 +14,7 @@
     <header class="header">
         <div class="header__inner">
             <nav>
-                <h1><a class="header__inner-link">@yield('title')
+                <h1><a class="header__logo-link" href="/">Todo
                 </a></h1>
                 <ul class="category--btn">
                     <li>

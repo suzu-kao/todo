@@ -10,13 +10,15 @@
 
 
 <!-- {{-- エラーメッセージ --}} -->
-@error('content')
+@if ($errors->any())
 <div class="error__container">
+    @foreach ($errors->all() as $error)
     <div class="error">
-        {{ $message }}
+        {{ $error }}
     </div>
+    @endforeach
 </div>
-@enderror
+@endif
 
 @section('content')
 
@@ -46,13 +48,13 @@
     </form>
 
     <h2>Todo検索</h2>
-    <form class="search--form form" action="" method="post">
+    <form class="search--form form" action="/todos/search" method="get">
         @csrf
         <div class="search--form_input form_input">
-            <input type="text" name="content" class="creat--form_item">
+            <input class="search-form__item-input" type="text" name="keyword" value="{{ old('keyword') }}">
         </div>
         <div class="search--form_select form_select">
-            <select name="" id="">
+            <select name="category_id" id="">
                 <option value="" selected>カテゴリ</option>
 
                 @foreach ($categories as $category)
@@ -91,8 +93,7 @@
                     <!-- カテゴリ -->
                     <div>
                         {{ $todo->category->name }}
-                        <!-- <input type="text" name="content" value="{{ $category->name }}" class="update--form_input">
-                        <input type="hidden" name="id" value="{{ $category['id'] }}"> -->
+                        <input type="hidden" name="category_id" value="{{ $todo->category->id }}">
                     </div>
                     <!-- 更新ボタン -->
                     <div>

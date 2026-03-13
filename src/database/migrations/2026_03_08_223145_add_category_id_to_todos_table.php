@@ -16,7 +16,6 @@ class AddCategoryIdToTodosTable extends Migration
         Schema::table('todos', function (Blueprint $table) {
             //
             $table->foreignId('category_id')
-                ->nullable()
                 ->after('id')
                 ->constrained()
                 ->cascadeOnDelete();
@@ -30,10 +29,13 @@ class AddCategoryIdToTodosTable extends Migration
      */
     public function down()
     {
-        Schema::table('todos', function (Blueprint $table) {
-            //
-            $table->dropForeign(['category_id']);
-            $table->dropColumn('category_id');
-        });
+        Schema::dropIfExists('todos');
     }
+    // {
+    //     Schema::table('todos', function (Blueprint $table) {
+    //         //
+    //         $table->dropForeign(['category_id']);
+    //         $table->dropColumn('category_id');
+    //     });
+    // }
 }
